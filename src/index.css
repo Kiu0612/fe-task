@@ -945,6 +945,7 @@
    position: relative;
    background: white;
    min-height: 288px;
+   padding: 2rem;
  }
  .list-items .select-placeholder {
    border: none;
@@ -988,6 +989,48 @@
    background: #001640;
    padding: 1.5rem 1.25rem;
    text-align: center;
+ }
+ .wrapper-template {
+   width: 37%;
+   border: 1px solid rgba(0, 22, 64, .1);
+   margin: 0 2rem 2rem 0;
+   display: inline-block;
+   background: #fff;
+ }
+ .wrapper-template .wrapper-template-header {
+   border-bottom: 1px solid rgba(0, 22, 64, .1);
+  }
+ .wrapper-template .wrapper-template-header img {
+   max-width: 100%;
+ }
+ .wrapper-template .wrapper-template-header h5 {
+   line-height: 1.2;
+   text-transform: initial;
+   font-size: 16px;
+   color: #666;
+   margin-bottom: 1rem;
+ }
+ .wrapper-template h6 {
+   line-height: 1.2;
+   font-size: 14px;
+   position: relative;
+   top: 1px;
+ }
+ .wrapper-template .wrapper-template-title {
+   font-size: 17px;
+   line-height: 1.2;
+   font-family: 'Nunito Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-weight: 800;
+   color: #001640;
+   padding: 1.5rem 1.5rem 1.25rem;
+ }
+ .wrapper-template .wrapper-template-footer {
+   display: flex;
+   flex-direction: row;
+   padding: 0 1.5rem 1.5rem;
+ }
+ .wrapper-template .wrapper-template-footer span {
+   margin-right: .5rem;
  }
  @media screen and (min-width: 40em) {
    .page.lists-show nav {

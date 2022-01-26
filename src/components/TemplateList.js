@@ -1,21 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { getRequest } from "../lib/apiClient";
+import Template from "./Template";
 
-import Template from './Template';
-
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 // import { updateTemplateState } from '../lib/store';
-
 
 export function PureTemplateList({ loading, templates }) {
     const events = {};
+    const [templatesList, setTemplatesList] = useState(null);
+
+    useEffect(() => {
+        async function fetchTemplates() {
+            let response = await getRequest("/templates");
+            let responseData = await response.data;
+            setTemplatesList(responseData);
+        }
+
+        fetchTemplates();
+    }, []);
 
     const LoadingRow = (
         <div className="loading-item">
             <span className="glow-checkbox" />
             <span className="glow-text">
-        <span>Loading</span> <span>cool</span> <span>state</span>
-      </span>
+                <span>Loading</span> <span>cool</span> <span>state</span>
+            </span>
         </div>
     );
     if (loading) {
@@ -47,10 +57,23 @@ export function PureTemplateList({ loading, templates }) {
     // ];
     // const templatesInOrder = templates;
     return (
-        <div className="list-items">
-            {templates.map(template => (
-                <Template key={template.id} template={template} {...events} />
-            ))}
+        <div className="page lists-show">
+            <nav>
+                <h1 className="title-page">
+                    <span className="title-wrapper">CASUS</span>
+                </h1>
+            </nav>
+            <div className="list-items">
+                {templatesList &&
+                    templatesList.length > 0 &&
+                    templatesList.map((template) => (
+                        <Template
+                            key={template.id}
+                            template={template}
+                            {...events}
+                        />
+                    ))}
+            </div>
         </div>
     );
 }
@@ -73,7 +96,7 @@ PureTemplateList.defaultProps = {
 export function TemplateList() {
     // We're retrieving our state from the store
     // const tasks = useSelector(state => state.tasks);
-    const templates = useSelector(state => state.templates)
+    const templates = useSelector((state) => state.templates);
     // // We're defining an variable to handle dispatching the actions back to the store
     // // const dispatch = useDispatch();
     //

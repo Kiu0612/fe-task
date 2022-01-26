@@ -1,10 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import dummyPreview from '../assets/icon/dummyPreview.svg'
+import React from "react";
+import PropTypes from "prop-types";
+import dummyPreview from "../assets/icon/dummyPreview.svg";
+import Moment from "react-moment";
 
-export default function Template({template: {id, title, date, state}}) {
+export default function Template({ template: { id, title, date, state } }) {
     return (
-        <div></div>
+        <div className="wrapper-template">
+            <div className="wrapper-template-header">
+                <img src={dummyPreview} alt="preview" />
+            </div>
+            <div className="wrapper-template-title">{title}</div>
+            <div className="wrapper-template-footer">
+                <span className="icon-time" />
+                <h6>
+                    <Moment fromNow>{date}</Moment>
+                </h6>
+            </div>
+        </div>
     );
 }
 
